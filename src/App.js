@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
+import Navbar from './components/Navbar/Navbar.jsx';
+import Hero from './components/Hero/Hero.jsx';
+import ValueProp from './components/ValueProp/ValueProp.jsx';
+import Services from './components/Services/Services.jsx';
+import Portfolio from './components/Portfolio/Portfolio.jsx';
+import Testimonials from './components/Testimonials/Testimonials.jsx';
+import TechExpertise from './components/TechExpertise/TechExpertise.jsx';
+import ContactCTA from './components/ContactCTA/ContactCTA.jsx';
+import Footer from './components/Footer/Footer.jsx';
+import FloatingActionButton from './components/FloatingActionButton/FloatingActionButton.jsx';
 
 function App() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-light text-deep">
+      <Navbar isScrolled={isScrolled} />
+      <Hero />
+      <ValueProp />
+      <Services />
+      <Portfolio />
+      <Testimonials />
+      <TechExpertise />
+      <ContactCTA />
+      <FloatingActionButton />
+      <Footer />
     </div>
   );
 }

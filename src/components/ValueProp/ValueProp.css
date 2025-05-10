@@ -1,0 +1,129 @@
+/* ValueProp.css - Modern redesign with glassmorphism and animations */
+
+:root {
+  --color-light: #e5e2d9;
+  --color-accent: #a7b995;
+  --color-mid: #618b55;
+  --color-dark: #3d5a3d;
+  --color-deep: #1f3329;
+  --color-accent-light: #bfcbaf;
+  --color-accent-dark: #8fa787;
+  --color-mid-light: #7aa06d;
+  --color-mid-dark: #517647;
+}
+
+.bg-light {
+  background: linear-gradient(135deg, var(--color-light) 0%, #f3f5ef 100%);
+  padding: 8rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-light::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(167, 185, 149, 0.3) 0%, transparent 70%);
+  animation: pulse 15s infinite alternate ease-in-out;
+  z-index: 1;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.1);
+  }
+}
+
+.container-sm {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.heading-2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, var(--color-dark), var(--color-mid));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.2s ease-out 0.3s forwards;
+  text-shadow: 0 5px 15px rgba(97, 139, 85, 0.15);
+}
+
+.body-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--color-deep);
+  line-height: 1.8;
+  max-width: 750px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.2s ease-out 0.6s forwards;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.body-text:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .bg-light {
+    padding: 5rem 0;
+  }
+
+  .heading-2 {
+    font-size: 2.8rem;
+  }
+
+  .body-text {
+    font-size: 1.2rem;
+    padding: 1.5rem;
+  }
+
+  .container-sm {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading-2 {
+    font-size: 2.2rem;
+  }
+
+  .body-text {
+    font-size: 1.1rem;
+    padding: 1.25rem;
+  }
+}

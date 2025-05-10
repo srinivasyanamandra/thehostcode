@@ -1,0 +1,157 @@
+:root {
+  --color-light: #e5e2d9;
+  --color-accent: #a7b995;
+  --color-mid: #618b55;
+  --color-dark: #3d5a3d;
+  --color-deep: #1f3329;
+  --color-accent-light: #bfcbaf;
+  --color-accent-dark: #8fa787;
+  --color-mid-light: #7aa06d;
+  --color-mid-dark: #517647;
+}
+
+.contact_CTA .bg-dark {
+  background: linear-gradient(145deg, var(--color-dark) 0%, var(--color-deep) 100%);
+  padding: 8rem 0;
+  position: relative;
+  overflow: hidden;
+  color: var(--color-light);
+}
+
+.contact_CTA .bg-dark::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(167, 185, 149, 0.3) 0%, transparent 60%);
+  animation: pulseGradient 15s ease-in-out infinite;
+  z-index: 1;
+}
+
+.contact_CTA .absolute.inset-0 {
+  opacity: 0.15;
+  background-size: cover;
+  background-position: center;
+  z-index: 2;
+  transition: opacity 0.6s ease;
+}
+
+.contact_CTA .bg-dark:hover .absolute.inset-0 {
+  opacity: 0.2;
+}
+
+.contact_CTA .container-sm {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+
+.contact_CTA .heading-2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--color-light);
+  margin-bottom: 2rem;
+  text-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideIn 1.2s ease-out 0.4s forwards;
+}
+
+.contact_CTA .body-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--color-accent-light);
+  line-height: 1.9;
+  max-width: 750px;
+  margin: 0 auto 3rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideIn 1.2s ease-out 0.6s forwards;
+}
+
+.contact_CTA .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 1.2rem 3rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: linear-gradient(45deg, var(--color-accent), var(--color-accent-dark));
+  color: var(--color-deep);
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(167, 185, 149, 0.6);
+  transition: all 0.5s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideIn 1.2s ease-out 0.8s forwards;
+}
+
+.contact_CTA .btn-secondary:hover {
+  background: linear-gradient(45deg, var(--color-accent-dark), var(--color-accent-light));
+  transform: translateY(-8px) scale(1.1);
+  box-shadow: 0 15px 40px rgba(167, 185, 149, 0.8);
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGradient {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact_CTA .bg-dark {
+    padding: 5rem 0;
+  }
+
+  .contact_CTA .heading-2 {
+    font-size: 2.5rem;
+  }
+
+  .contact_CTA .body-text {
+    font-size: 1.2rem;
+  }
+
+  .contact_CTA .btn-secondary {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+  }
+
+  .contact_CTA .container-sm {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact_CTA .heading-2 {
+    font-size: 2rem;
+  }
+
+  .contact_CTA .body-text {
+    font-size: 1.1rem;
+  }
+
+  .contact_CTA .btn-secondary {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+  }
+}

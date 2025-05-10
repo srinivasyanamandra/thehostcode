@@ -1,0 +1,130 @@
+:root {
+  --color-light: #e5e2d9;
+  --color-accent: #a7b995;
+  --color-mid: #618b55;
+  --color-dark: #3d5a3d;
+  --color-deep: #1f3329;
+  --color-accent-light: #bfcbaf;
+  --color-accent-dark: #8fa787;
+  --color-mid-light: #7aa06d;
+  --color-mid-dark: #517647;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-deep) 100%);
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(31, 51, 41, 0.5), rgba(0, 0, 0, 0.7));
+  z-index: 2;
+}
+
+.hero-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75) contrast(1.1);
+  transform: scale(1.05);
+  transition: transform 5s ease;
+}
+
+.hero:hover video {
+  transform: scale(1.1);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 900px;
+  padding: 2rem;
+  animation: heroFadeIn 1.8s ease-out;
+}
+
+.hero-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-light);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 1s ease-out 0.5s forwards;
+}
+
+.hero-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: var(--color-accent-light);
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 1s ease-out 0.7s forwards;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: linear-gradient(45deg, var(--color-accent), var(--color-accent-light));
+  color: var(--color-deep);
+  border-radius: 50px;
+  box-shadow: 0 8px 25px rgba(167, 185, 149, 0.5);
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 1s ease-out 0.9s forwards;
+}
+
+.hero-cta:hover {
+  background: linear-gradient(45deg, var(--color-accent-dark), var(--color-accent));
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(167, 185, 149, 0.7);
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

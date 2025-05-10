@@ -1,0 +1,195 @@
+:root {
+  --color-light: #e5e2d9;
+  --color-accent: #a7b995;
+  --color-mid: #618b55;
+  --color-dark: #3d5a3d;
+  --color-deep: #1f3329;
+  --color-accent-light: #bfcbaf;
+  --color-accent-dark: #8fa787;
+  --color-mid-light: #7aa06d;
+  --color-mid-dark: #517647;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 1000;
+  padding: 1.8rem 0;
+  transition: all 0.5s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  padding: 1.2rem 0;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+
+.navbar-logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-mid-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+  animation: slideIn 1.2s ease-out 0.3s forwards;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.1);
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.navbar-link {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--color-deep);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.4s ease, transform 0.4s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideIn 1.2s ease-out 0.5s forwards;
+}
+
+.navbar-link:nth-child(2) { animation-delay: 0.6s; }
+.navbar-link:nth-child(3) { animation-delay: 0.7s; }
+.navbar-link:nth-child(4) { animation-delay: 0.8s; }
+.navbar-link:nth-child(5) { animation-delay: 0.9s; }
+.navbar-link:nth-child(6) { animation-delay: 1.0s; }
+
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 4px;
+  bottom: -10px;
+  left: 0;
+  background: linear-gradient(90deg, var(--color-accent-light), var(--color-accent-dark));
+  transition: width 0.4s ease;
+}
+
+.navbar-link:hover {
+  color: var(--color-accent-dark);
+  transform: translateY(-2px);
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+}
+
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1rem;
+  position: relative;
+  z-index: 1001;
+}
+
+.navbar-toggle svg {
+  color: var(--color-mid-dark);
+  width: 32px;
+  height: 32px;
+  transition: transform 0.5s ease, color 0.4s ease;
+}
+
+.navbar-toggle:hover svg {
+  transform: rotate(360deg);
+  color: var(--color-accent);
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 85%;
+    background: linear-gradient(135deg, var(--color-light) 0%, var(--color-accent-light) 100%);
+    backdrop-filter: blur(15px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .navbar-menu.active {
+    right: 0;
+  }
+
+  .navbar-link {
+    font-size: 2rem;
+    margin: 2rem 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .navbar-menu.active .navbar-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .navbar-menu.active .navbar-link:nth-child(1) { transition-delay: 0.2s; }
+  .navbar-menu.active .navbar-link:nth-child(2) { transition-delay: 0.3s; }
+  .navbar-menu.active .navbar-link:nth-child(3) { transition-delay: 0.4s; }
+  .navbar-menu.active .navbar-link:nth-child(4) { transition-delay: 0.5s; }
+  .navbar-menu.active .navbar-link:nth-child(5) { transition-delay: 0.6s; }
+  .navbar-menu.active .navbar-link:nth-child(6) { transition-delay: 0.7s; }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo {
+    font-size: 2rem;
+  }
+
+  .navbar-link {
+    font-size: 1.8rem;
+  }
+
+  .navbar-toggle svg {
+    width: 28px;
+    height: 28px;
+  }
+}
